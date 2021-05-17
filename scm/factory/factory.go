@@ -141,9 +141,9 @@ func NewClient(driver, serverURL, oauthToken string, opts ...ClientOptionFunc) (
 			if client.Username == "" && len(strings.SplitN(oauthToken, ":", 2)) == 2 {
 				credentials := strings.SplitN(oauthToken, ":", 2)
 				config := clientcredentials.Config{
-					ClientID: credentials[0],
+					ClientID:     credentials[0],
 					ClientSecret: credentials[1],
-					TokenURL: "https://bitbucket.org/site/oauth2/access_token",
+					TokenURL:     "https://bitbucket.org/site/oauth2/access_token",
 				}
 				client.Client = config.Client(context.Background())
 				return client, nil
